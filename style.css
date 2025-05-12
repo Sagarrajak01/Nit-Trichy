@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
 .header {
   min-height: 100vh;
   width: 100%;
@@ -13,7 +18,10 @@
   background-size: cover;
   position: relative;
 }
-
+.logo{
+  width: 50px;
+  height: auto;
+}
 nav {
   display: flex;
   padding: 2% 6%;
@@ -73,7 +81,7 @@ nav img {
 
 .text-box p {
   margin: 10px 0 40px;
-  font-size: 14px;
+  font-size: 18px;
   color: white;
 }
 
@@ -103,6 +111,9 @@ nav .fa-times {
 @media (max-width: 700px) {
   .text-box h1 {
     font-size: 25px;
+  }
+  .text-box p{
+    font-size: 8;
   }
 
   .nav-links ul li {
@@ -320,6 +331,7 @@ h3 {
   width: 100%;
   text-align: center;
   padding: 30px 0;
+  padding: 8%;
 }
 .footer h4 {
   margin-bottom: 25px;
