@@ -98,15 +98,16 @@
         </div>
       </div>
     </section>
+    
     <section class="form-section">
       <h3>Get In Touch</h3>
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea rows="4" placeholder="Your Message" required></textarea>
+      <form class="contact-form" action="/submit" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
         <button type="submit" class="hero-btn red-btn">Send Message</button>
       </form>
-    </section>
+  </section>
 
     <section class="footer">
       <h4>About Us</h4>
