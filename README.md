@@ -1,30 +1,31 @@
-1. Clone the repository:
-   $ git clone https://github.com/Sagarrajak01/Nit-Trichy.git
-   $ cd Nit-Trichy
+1. **Clone the repository:**
+git clone https://github.com/Sagarrajak01/Nit-Trichy.git
+cd Nit-Trichy
 
-2. Install Node.js and npm:
+2. **Install Node.js and npm:**
 
-   Check if installed:
-   $ node -v
-   $ npm -v
+Check if Node.js and npm are already installed:
+node -v
+npm -v
 
-   If not installed, download from:
-   https://nodejs.org/
+If not installed, download and install them from:
+[https://nodejs.org/](https://nodejs.org/)
 
-3. Install dependencies:
+3. **Install dependencies:**
 
-   Go to the Node.js project folder, then run:
-   $ npm install
+Navigate to the Node.js project folder and run:
+npm install
 
-4. Run the Node.js application:
+4. **Run the Node.js application:**
 
-   Use one of these commands:
-   $ npm start
-   OR
-   $ node index.js
+Use one of the following commands to start the app:
 
-5. Access the application:
+npm start
 
-   Usually at:
-   http://localhost:3000
-   (Check project config for exact port)
+**OR**
+node index.js
+
+5. **Access the application:**
+
+By default, the application runs at:
+[http://localhost:3000](http://localhost:3000)
