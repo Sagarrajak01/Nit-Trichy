@@ -1,119 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NIT Trichy - Admission</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <section class="sub-header">
-        <nav>
-            <a href="index.html"><img src="gallary/logo.png" alt="Logo"></a>
-            <div class="nav-links" id="navLinks">
-                <i class="fas fa-times" onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="blog.html">BLOG</a></li>
-                    <li><a href="Contact.html">CONTACT</a></li>
-                    <li><a href="admission.html">ADMISSION</a></li>
-                    <li><a href="login.html">LOGIN</a></li>
-                </ul>
-            </div>
-            <i class="fas fa-bars" onclick="showMenu()"></i>
-        </nav>
-        <h1>Admission</h1>
+      <nav>
+        <a href="index.html"><img src="gallary/logo.png" alt="Logo" /></a>
+        <div class="nav-links" id="navLinks">
+          <i class="fas fa-times" onclick="hideMenu()"></i>
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="blog.html">BLOG</a></li>
+            <li><a href="Contact.html">CONTACT</a></li>
+            <li><a href="admission.html">ADMISSION</a></li>
+            <li><a href="login.html">LOGIN</a></li>
+          </ul>
+        </div>
+        <i class="fas fa-bars" onclick="showMenu()"></i>
+      </nav>
+      <h1>Admission</h1>
     </section>
 
     <section class="form-main">
-        <div class="form-left">
-            <section class="fees-section">
-                <h2>Course Fees</h2>
-                <ul>
-                    <li>Engineering : ₹75,000 per semester</li>
-                    <li>Masters: ₹90,000 per semester</li>
-                    <li>Hostel Fees : ₹55,000 per semester</li>
-                    <li>Research Fees : ₹60,000 per semester</li>
-                </ul>
-            </section>
-        </div>
+      <div class="form-left">
+        <section class="fees-section">
+          <h2>Course Fees</h2>
+          <ul>
+            <li>
+              <strong>Engineering (B.Tech/B.Arch) : </strong> ₹75,000 per semester
+            </li>
+            <li>
+              Tuition Fee : ₹62,500 - Other Charges (Library, Lab, Gymetc.) : ₹12,500
+            </li>
+            <br>
+            <li>
+              <strong>Masters (M.Tech/M.Sc/MCA/MBA) : </strong> ₹90,000 per
+              semester
+            </li>
+            <li>Tuition Fee : ₹70,000 - Institute/Facility Charges: ₹20,000</li>
+            <br>
+            <li><strong>Hostel Fees : </strong> ₹55,000 per semester</li>
+            <li>
+              Room Rent: ₹7,500 - Mess Advance : ₹22,000 - Miscellaneous: ₹25,500
+            </li>
+            <br>
+            <li><strong>Research (Ph.D) : </strong> ₹60,000 per semester</li>
+            <li>
+              Tuition Fee : ₹45,000 - Research Facility & Admin Charges: ₹15,000
+            </li>
+          </ul>
+        </section>
+      </div>
 
-        <div class="form-right">
-            <h2>Admission Form</h2>
-            <p>Register Now to Get Information.</p>
-            <form>
-                <label for="name">Name *</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Enter Email *</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="mobile">Enter Mobile No. *</label>
-                <input type="tel" id="mobile" name="mobile" required>
-
-                <label for="state">State *</label>
-                <select id="state" name="state" required>
-                    <option value="" disabled selected>Select your state</option>
-                    <option>Andhra Pradesh</option>
-                    <option>Bihar</option>
-                    <option>Delhi</option>
-                    <option>Karnataka</option>
-                    <option>Maharashtra</option>
-                    <option>Tamil Nadu</option>
-                    <option>West Bengal</option>
-                </select>
-
-                <label for="qualification">Qualification *</label>
-                <select id="qualification" name="qualification" required>
-                    <option value="" disabled selected>Select your qualification</option>
-                    <option>Intermediate (10+2)</option>
-                    <option>Undergraduate (UG)</option>
-                    <option>Postgraduate (PG)</option>
-                </select>
-
-                <label for="discipline">Discipline interested in *</label>
-                <select id="discipline" name="discipline" required>
-                    <option value="" disabled selected>Select discipline</option>
-                    <option>Civil Engineering</option>
-                    <option>Computer Science and Engineering</option>
-                    <option>Mechanical Engineering</option>
-                    <option>Master of Computer Applications</option>
-                    <option>Research</option>
-                    
-                </select>
-
-                <label>
-                    <input type="checkbox" required>
-                    I authorize NIT Trichy to contact me with updates and notifications via Email, SMS,
-                    WhatsApp and Call. This will override the registry on DND / NDNC.
-                </label>
-
-                <button type="submit">Apply Now</button>
-            </form>
-        </div>
+      <div class="form-right">
+        <section class="fees-section">
+          <h2>Admission</h2>
+          <h3>Engineering</h3>
+          <ul>
+            <li><strong>B.Tech/B.Arch : </strong> JEE Main + JoSAA</li>
+          </ul>
+          <br>
+          <h3>Masters</h3>
+          <ul>
+            <li><strong>M.Tech : </strong> GATE + CCMT</li>
+            <li><strong>MCA : </strong> NIMCET</li>
+            <li><strong>M.Sc : </strong> IIT JAM + CCMN</li>
+            <li><strong>MBA : </strong> CAT </li>
+          </ul>
+          <h3>Research</h3>
+          <ul>
+            <li><strong>Ph.D : </strong> PG Degree + Written Test and Interview</li>
+          </ul>
+        </section>
+      </div>
     </section>
 
     <section class="footer">
-        <h4>About Us</h4>
-        <p>
-            NIT Trichy is a premier institute of national importance, dedicated to
-            fostering innovation, research, and technical excellence.
-        </p>
-        <div class="icons">
-            <i class="fab fa-facebook-f"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-linkedin-in"></i>
-        </div>
-        <p>Built with <i class="fas fa-heart"></i> Sagar Rajak</p>
+      <h4>About Us</h4>
+      <p>
+        NIT Trichy is a premier institute of national importance, dedicated to
+        fostering innovation, research, and technical excellence.
+      </p>
+      <div class="icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+      <p>Built with <i class="fas fa-heart"></i> Sagar Rajak</p>
     </section>
 
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
