@@ -21,9 +21,9 @@ const collections = {
 async function connectToMongo() {
   try {
     await client.connect();
-    console.log('✅ Connected to MongoDB');
+    console.log('Connected to MongoDB');
   } catch (err) {
-    console.error('❌ MongoDB connection failed:', err);
+    console.error('MongoDB connection failed:', err);
   }
 }
 
@@ -33,38 +33,6 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// === Routes ===
-
-// Register / Contact Form Submission
-app.post('/submit', async (req, res) => {
-  const { name, email, mobile, state, qualification, discipline, category } = req.body;
-  if (!name || !email || !mobile || !state || !qualification || !discipline || !category) {
-    return res.status(400).json({ message: 'All fields are required' });
-  }
-
-  const newEntry = {
-    name,
-    email,
-    mobile,
-    state,
-    qualification,
-    discipline,
-    category,
-    timestamp: new Date().toISOString()
-  };
-
-  try {
-    const db = client.db(dbName);
-    await db.collection(collections.messages).insertOne(newEntry);
-    console.log('📩 New form submission:', newEntry);
-    res.status(200).json({ message: 'Form submitted successfully' });
-  } catch (err) {
-    console.error('❌ Error saving form:', err);
-    res.status(500).json({ message: 'Failed to submit form' });
-  }
-});
-
-// User Login
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {
@@ -76,13 +44,12 @@ app.post('/login', async (req, res) => {
     const user = await db.collection(collections.users).findOne({ username, password });
 
     if (user) {
-      // ✅ Fixed: Use relative path for correct redirection
       res.status(200).json({ message: 'Login successful', redirect: 'store-data.html' });
     } else {
       res.status(401).json({ message: 'Invalid username or password' });
     }
   } catch (err) {
-    console.error('❌ Login error:', err);
+    console.error('Login error:', err);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
@@ -100,12 +67,11 @@ app.get('/get-data', async (req, res) => {
                          .toArray();
     res.status(200).json({ data });
   } catch (err) {
-    console.error('❌ Error fetching data:', err);
+    console.error('Error fetching data:', err);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-// Store Data After Login
 app.post('/store-data', async (req, res) => {
   const { username, data } = req.body;
   if (!username || !data) {
@@ -115,15 +81,14 @@ app.post('/store-data', async (req, res) => {
   try {
     const db = client.db(dbName);
     await db.collection(collections.studentData).insertOne({ username, data, timestamp: new Date().toISOString() });
-    console.log('📝 Data stored for:', username);
+    console.log('Data stored for:', username);
     res.status(200).json({ message: 'Data stored successfully' });
   } catch (err) {
-    console.error('❌ Data storage error:', err);
+    console.error('Data storage error:', err);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-// Add a New User (manually)
 app.post('/add-user', async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {
@@ -133,23 +98,22 @@ app.post('/add-user', async (req, res) => {
   try {
     const db = client.db(dbName);
     await db.collection(collections.users).insertOne({ username, password });
-    console.log('👤 User added:', username);
+    console.log('User added:', username);
     res.status(200).json({ message: 'User added successfully' });
   } catch (err) {
-    console.error('❌ Error adding user:', err);
+    console.error('Error adding user:', err);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-// Handle Ctrl+C or termination
 process.on('SIGINT', async () => {
   await client.close();
-  console.log('🔌 MongoDB connection closed');
+  console.log('MongoDB connection closed');
   process.exit(0);
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
 
 app.post('/get-user-data', async (req, res) => {
@@ -166,7 +130,7 @@ app.post('/get-user-data', async (req, res) => {
 
     res.status(200).json({ entries });
   } catch (err) {
-    console.error("❌ Fetch user data error:", err);
+    console.error("Fetch user data error:", err);
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
@@ -181,7 +145,7 @@ app.post('/delete-data', async (req, res) => {
     await db.collection(collections.studentData).deleteOne({ _id: new ObjectId(id) });
     res.status(200).json({ message: "Deleted successfully" });
   } catch (err) {
-    console.error("❌ Delete error:", err);
+    console.error("Delete error:", err);
     res.status(500).json({ message: "Delete failed" });
   }
 });
@@ -198,8 +162,60 @@ app.post('/update-data', async (req, res) => {
     );
     res.status(200).json({ message: "Updated successfully" });
   } catch (err) {
-    console.error("❌ Update error:", err);
+    console.error("Update error:", err);
     res.status(500).json({ message: "Update failed" });
+  }
+});
+
+app.post('/contact-submit', async (req, res) => {
+  const { name, email, subject, message } = req.body;
+
+  if (!name || !email || !subject || !message) {
+    return res.status(400).json({ message: 'All fields are required' });
+  }
+
+  try {
+    const db = client.db(dbName);
+    await db.collection(collections.messages).insertOne({
+      name,
+      email,
+      subject,
+      message,
+      timestamp: new Date().toISOString()
+    });
+    res.status(200).json({ message: 'Message sent successfully' });
+  } catch (err) {
+    console.error('Contact form submission error:', err);
+    res.status(500).json({ message: 'Failed to submit message' });
+  }
+});
+
+app.get('/admin/messages', async (req, res) => {
+  try {
+    const db = client.db(dbName);
+    const messages = await db.collection(collections.messages)
+      .find()
+      .sort({ timestamp: -1 })
+      .toArray();
+    res.status(200).json({ messages });
+  } catch (err) {
+    console.error('Error fetching messages:', err);
+    res.status(500).json({ message: 'Failed to fetch messages' });
+  }
+});
+
+app.post('/admin/delete-message', async (req, res) => {
+  const { id } = req.body;
+
+  if (!id) return res.status(400).json({ message: 'ID required' });
+
+  try {
+    const db = client.db(dbName);
+    await db.collection(collections.messages).deleteOne({ _id: new ObjectId(id) });
+    res.status(200).json({ message: 'Message deleted' });
+  } catch (err) {
+    console.error('Error deleting message:', err);
+    res.status(500).json({ message: 'Failed to delete message' });
   }
 });
 
