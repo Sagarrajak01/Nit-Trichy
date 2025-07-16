@@ -2,6 +2,8 @@
 
 A simple and secure full-stack web application for managing feedback, student data, and internal communication at NIT Trichy.
 
+# Disclamer
+This is a personal project built for educational/demo purposes. Not affiliated with NIT Trichy or its official website.
 ---
 
 ## 🔧 Technologies Used
